@@ -1,0 +1,88 @@
+/* 3D Duygu Zarı (Cube) Sahnesi ve Perspektif Stilleri */
+
+.emotion-dice-scene {
+  width: 280px;
+  height: 280px;
+  perspective: 1100px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.emotion-dice-scene.is-dual {
+  width: 230px;
+  height: 230px;
+}
+
+.emotion-cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 2.1s cubic-bezier(0.15, 0.85, 0.25, 1);
+}
+
+.emotion-cube-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  border: 6px solid #1E293B;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background: #FFFFFF;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.18), 0 12px 28px rgba(15, 23, 42, 0.16);
+}
+
+.emotion-cube-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Tek Zar (280px -> yarıçap 140px) yüz konumları */
+.emotion-dice-scene:not(.is-dual) .face-0 { transform: rotateY(0deg) translateZ(140px); }
+.emotion-dice-scene:not(.is-dual) .face-1 { transform: rotateY(180deg) translateZ(140px); }
+.emotion-dice-scene:not(.is-dual) .face-2 { transform: rotateY(90deg) translateZ(140px); }
+.emotion-dice-scene:not(.is-dual) .face-3 { transform: rotateY(-90deg) translateZ(140px); }
+.emotion-dice-scene:not(.is-dual) .face-4 { transform: rotateX(90deg) translateZ(140px); }
+.emotion-dice-scene:not(.is-dual) .face-5 { transform: rotateX(-90deg) translateZ(140px); }
+
+/* Çift Zar (230px -> yarıçap 115px) yüz konumları */
+.emotion-dice-scene.is-dual .face-0 { transform: rotateY(0deg) translateZ(115px); }
+.emotion-dice-scene.is-dual .face-1 { transform: rotateY(180deg) translateZ(115px); }
+.emotion-dice-scene.is-dual .face-2 { transform: rotateY(90deg) translateZ(115px); }
+.emotion-dice-scene.is-dual .face-3 { transform: rotateY(-90deg) translateZ(115px); }
+.emotion-dice-scene.is-dual .face-4 { transform: rotateX(90deg) translateZ(115px); }
+.emotion-dice-scene.is-dual .face-5 { transform: rotateX(-90deg) translateZ(115px); }
+
+.emotion-cube.is-landed .emotion-cube-face.is-winner-face {
+  border-color: #F59E0B;
+  box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.38), 0 18px 35px rgba(15, 23, 42, 0.24);
+}
+
+@media (max-width: 900px) {
+  .emotion-dice-scene {
+    width: 220px;
+    height: 220px;
+  }
+  .emotion-dice-scene:not(.is-dual) .face-0 { transform: rotateY(0deg) translateZ(110px); }
+  .emotion-dice-scene:not(.is-dual) .face-1 { transform: rotateY(180deg) translateZ(110px); }
+  .emotion-dice-scene:not(.is-dual) .face-2 { transform: rotateY(90deg) translateZ(110px); }
+  .emotion-dice-scene:not(.is-dual) .face-3 { transform: rotateY(-90deg) translateZ(110px); }
+  .emotion-dice-scene:not(.is-dual) .face-4 { transform: rotateX(90deg) translateZ(110px); }
+  .emotion-dice-scene:not(.is-dual) .face-5 { transform: rotateX(-90deg) translateZ(110px); }
+
+  .emotion-dice-scene.is-dual {
+    width: 170px;
+    height: 170px;
+  }
+  .emotion-dice-scene.is-dual .face-0 { transform: rotateY(0deg) translateZ(85px); }
+  .emotion-dice-scene.is-dual .face-1 { transform: rotateY(180deg) translateZ(85px); }
+  .emotion-dice-scene.is-dual .face-2 { transform: rotateY(90deg) translateZ(85px); }
+  .emotion-dice-scene.is-dual .face-3 { transform: rotateY(-90deg) translateZ(85px); }
+  .emotion-dice-scene.is-dual .face-4 { transform: rotateX(90deg) translateZ(85px); }
+  .emotion-dice-scene.is-dual .face-5 { transform: rotateX(-90deg) translateZ(85px); }
+}
+

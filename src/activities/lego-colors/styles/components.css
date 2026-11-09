@@ -1,0 +1,729 @@
+/**
+ * @file css/components.css
+ * @description El SVG animasyonları, 3D Lego parçaları, çark ibresi, dev butonlar ve ayar modalı.
+ */
+
+/* Aktif Renk Mini Noktaları (Yazısız) */
+.active-colors-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 4px;
+}
+
+.color-mini-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2.5px solid;
+  display: inline-block;
+}
+
+/* Parmak Sırası Görsel Adım Noktaları (Yazısız) */
+.seq-step-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid var(--border-light);
+  background: #F8FAFC;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.seq-step-dot:hover {
+  transform: scale(1.08);
+}
+
+.seq-step-dot.is-current {
+  border-color: #F59E0B;
+  background: #FEF3C7;
+  color: #92400E;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.35);
+  transform: scale(1.14);
+}
+
+/* Çark Paneli ve İbresi */
+.wheel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 32px solid #EF4444;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  z-index: 5;
+}
+
+#wheel-canvas {
+  cursor: pointer;
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+#wheel-canvas:active {
+  transform: scale(0.98);
+}
+
+.wheel-hint {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* El Sahnesi ve SVG Etkileşimleri */
+.hands-stage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.hand-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-height: 100%;
+  flex: 1;
+  position: relative;
+}
+
+.hand-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--border-light);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  z-index: 4;
+}
+
+.hand-side-title {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.hand-view-pill {
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+.hand-svg {
+  width: auto;
+  height: 100%;
+  max-height: calc(100vh - 180px);
+  max-width: 100%;
+  overflow: visible;
+}
+
+.finger-node {
+  cursor: pointer;
+}
+
+.finger-node .active-pointer,
+.finger-node .finger-pulse-ring {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.finger-node.is-active .active-pointer {
+  opacity: 1;
+  animation: bounceArrow 0.75s infinite alternate ease-in-out;
+}
+
+.finger-node.is-active .finger-pulse-ring {
+  opacity: 1;
+  animation: spinRing 4s linear infinite;
+}
+
+.finger-node .lego-brick-group {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.finger-node:hover .lego-brick-group {
+  transform: translate(0, -18px) scale(1.06);
+}
+
+.finger-node.is-active .lego-brick-group {
+  transform: translate(0, -18px) scale(1.12);
+}
+
+.finger-node.is-cycling .lego-brick-group {
+  animation: slotPulse 0.18s infinite alternate ease-in-out;
+}
+
+@keyframes bounceArrow {
+  0% { transform: translate(0, -68px); }
+  100% { transform: translate(0, -55px); }
+}
+
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slotPulse {
+  0% { transform: translate(0, -16px) scale(1.08); }
+  100% { transform: translate(0, -22px) scale(1.18); }
+}
+
+/* Üst Üste Lego Kule (Tower) Modu Stilleri */
+.tower-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.tower-brick-node {
+  cursor: pointer;
+}
+
+.tower-brick-node .active-pointer-left,
+.tower-brick-node .active-pointer-right {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tower-brick-node.is-active .active-pointer-left,
+.tower-brick-node.is-active .active-pointer-right {
+  opacity: 1;
+}
+
+.tower-brick-node .lego-brick-group {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tower-brick-node:hover .lego-brick-group {
+  transform: scale(1.03);
+}
+
+.tower-brick-node.is-active .lego-brick-group {
+  transform: scale(1.05);
+}
+
+.tower-brick-node.is-cycling .lego-brick-group {
+  animation: towerSlotPulse 0.16s infinite alternate ease-in-out;
+}
+
+@keyframes towerSlotPulse {
+  0% { transform: scale(1.02) translateY(-2px); }
+  100% { transform: scale(1.09) translateY(-6px); }
+}
+
+/* 3 Seçenekli Lego Eşleştirme (Quiz) Modu Stilleri */
+.quiz-board {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 16px;
+  padding: 8px 16px;
+}
+
+.quiz-target-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.quiz-target-card {
+  background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 4px dashed #F59E0B;
+  border-radius: var(--radius-lg);
+  padding: 14px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.16);
+  height: 100%;
+  max-height: 220px;
+  min-width: 240px;
+  transition: all 0.25s ease;
+}
+
+.quiz-target-card.is-solved {
+  border-style: solid;
+  border-color: #16A34A;
+  background: linear-gradient(180deg, #F0FDF4 0%, #DCFCE7 100%);
+  transform: scale(1.04);
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 980px;
+  flex: 1.15;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.quiz-option-card {
+  position: relative;
+  background: #F8FAFC;
+  border: 4px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 0 rgba(15, 23, 42, 0.12);
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, opacity 0.2s ease;
+}
+
+.quiz-option-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-blue);
+  background: #F0F9FF;
+}
+
+.quiz-option-card:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 rgba(15, 23, 42, 0.12);
+}
+
+.quiz-option-card.is-correct {
+  border-color: #16A34A;
+  background: #DCFCE7;
+  box-shadow: 0 8px 0 #15803D, 0 0 0 6px rgba(22, 163, 74, 0.25);
+  animation: quizCorrectPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.quiz-option-card.is-wrong {
+  border-color: #FCA5A5;
+  background: #FEF2F2;
+  opacity: 0.45;
+  cursor: default;
+  animation: quizWrongShake 0.36s ease;
+}
+
+.quiz-option-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quiz-combo-svg {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 175px;
+  overflow: visible;
+}
+
+.quiz-target-card .quiz-combo-svg {
+  max-height: 185px;
+}
+
+.quiz-feedback-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+@keyframes quizCorrectPop {
+  0% { transform: scale(0.92); }
+  60% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes quizWrongShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* Alt Etkileşim Dev Butonları */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: var(--radius-lg);
+  border: 3px solid rgba(15, 23, 42, 0.15);
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+}
+
+.action-btn:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(15, 23, 42, 0.22);
+}
+
+.action-btn.primary {
+  background: linear-gradient(180deg, #38BDF8 0%, #0284C7 100%);
+  color: #FFFFFF;
+}
+
+.action-btn.success {
+  background: linear-gradient(180deg, #4ADE80 0%, #16A34A 100%);
+  color: #FFFFFF;
+}
+
+.action-btn.secondary {
+  background: linear-gradient(180deg, #FBBF24 0%, #D97706 100%);
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  padding: 14px 22px;
+}
+
+.action-btn.subtle {
+  background: #F1F5F9;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  padding: 14px 20px;
+}
+
+.action-btn.celebrate {
+  background: linear-gradient(180deg, #A855F7 0%, #7E22CE 100%);
+  color: #FFFFFF;
+}
+
+.action-btn.is-spinning {
+  background: #94A3B8;
+  color: #FFFFFF;
+  cursor: wait;
+}
+
+.pulse-attention {
+  animation: gentleBtnPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes gentleBtnPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Ayarlar & Renk Yönetimi Modalı */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 20px;
+}
+
+.modal-card {
+  background: var(--surface-white);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  border-radius: var(--radius-lg);
+  border: 3px solid var(--border-light);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  background: #F8FAFC;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.modal-header h2 {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+/* Modal Sekmeleri (Tabs) */
+.modal-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 12px 22px;
+  background: #F1F5F9;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.modal-tab-btn {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 800;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.modal-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--text-primary);
+}
+
+.modal-tab-btn.active {
+  background: var(--surface-white);
+  color: var(--brand-blue);
+  border-color: var(--border-light);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.modal-body {
+  padding: 20px 22px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.settings-tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Görsel Etkinlik Seçici Kartlar */
+.activity-cards-picker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.activity-pick-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 10px;
+  border-radius: var(--radius-md);
+  border: 2.5px solid var(--border-light);
+  background: #F8FAFC;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.activity-pick-card:hover {
+  border-color: #CBD5E1;
+  background: #F1F5F9;
+}
+
+.activity-pick-card.active {
+  border-color: var(--brand-blue);
+  background: #EFF6FF;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.14);
+}
+
+.activity-pick-card .act-icon {
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.activity-pick-card .act-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.activity-pick-card.active .act-title {
+  color: var(--brand-blue);
+}
+
+.settings-section h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.colors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 10px;
+}
+
+.color-toggle-card {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: #F8FAFC;
+  overflow: hidden;
+  opacity: 0.65;
+  transition: all 0.15s ease;
+}
+
+.color-toggle-card.is-active {
+  opacity: 1;
+  border-color: var(--brand-blue);
+  background: #F0F9FF;
+}
+
+.color-toggle-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid;
+  flex-shrink: 0;
+}
+
+.color-label {
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.color-status {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+}
+
+.color-delete-btn {
+  border: none;
+  background: #FEE2E2;
+  padding: 10px 8px;
+  cursor: pointer;
+}
+
+.add-color-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.text-input {
+  flex: 1;
+  min-width: 160px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border-light);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.color-picker-input {
+  width: 52px;
+  height: 42px;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: 2px;
+  background: #FFFFFF;
+}
+
+.settings-grid-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.duration-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #F8FAFC;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-light);
+  font-weight: 700;
+}
+
+/* Konfeti Katmanı */
+#confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 14px;
+  height: 22px;
+  border-radius: 3px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+

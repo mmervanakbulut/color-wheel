@@ -1,0 +1,283 @@
+/**
+ * @file src/styles/activity-shell.css
+ * @description Tüm etkileşimli etkinliklerin ortak kullandığı (DRY) tema değişkenleri,
+ *              üst araç çubuğu, dev aksiyon butonları, çark ibresi, modal ve konfeti stilleri.
+ */
+
+:root {
+  --bg-gradient-start: #F0F9FF;
+  --bg-gradient-end: #E0F2FE;
+  --surface-white: #FFFFFF;
+  --surface-muted: #F8FAFC;
+  --border-light: #CBD5E1;
+  --border-strong: #94A3B8;
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+
+  --brand-blue: #0284C7;
+  --brand-blue-dark: #0369A1;
+  --brand-green: #16A34A;
+  --brand-green-dark: #15803D;
+  --brand-amber: #F59E0B;
+  --brand-red: #EF4444;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 10px -4px rgba(15, 23, 42, 0.05);
+  --shadow-btn: 0 6px 0 rgba(15, 23, 42, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(145deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  color: var(--text-primary);
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px 16px;
+  gap: 8px;
+}
+
+/* Üst Hızlı Öğretmen Çubuğu */
+.top-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--surface-white);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 2px solid var(--border-light);
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.segmented-control {
+  display: inline-flex;
+  background: #F1F5F9;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  gap: 3px;
+}
+
+.seg-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 10px;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.seg-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.seg-btn.active {
+  background: var(--brand-blue);
+  color: #FFFFFF;
+  box-shadow: 0 2px 5px rgba(2, 132, 199, 0.3);
+}
+
+.quick-select {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-light);
+  background: #F8FAFC;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.icon-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 11px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-light);
+  background: #F8FAFC;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.icon-pill-btn:hover {
+  background: #E2E8F0;
+}
+
+.icon-pill-btn.is-muted {
+  background: #FEE2E2;
+  border-color: #FCA5A5;
+  color: #B91C1C;
+}
+
+.icon-pill-btn.is-active {
+  background: #DCFCE7;
+  border-color: #86EFAC;
+  color: #15803D;
+}
+
+.icon-pill-btn.accent {
+  background: #FEF3C7;
+  border-color: #FCD34D;
+  color: #92400E;
+}
+
+/* Ortak Çark İbresi */
+.wheel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 32px solid #EF4444;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  z-index: 5;
+}
+
+/* Alt Etkileşim Çubuğu ve Dev Butonlar */
+.bottom-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 4px 0;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: var(--radius-lg);
+  border: 3px solid rgba(15, 23, 42, 0.15);
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+}
+
+.action-btn:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(15, 23, 42, 0.22);
+}
+
+.action-btn.primary {
+  background: linear-gradient(180deg, #38BDF8 0%, #0284C7 100%);
+  color: #FFFFFF;
+}
+
+.action-btn.success {
+  background: linear-gradient(180deg, #4ADE80 0%, #16A34A 100%);
+  color: #FFFFFF;
+}
+
+.action-btn.secondary {
+  background: linear-gradient(180deg, #FBBF24 0%, #D97706 100%);
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  padding: 14px 22px;
+}
+
+.action-btn.subtle {
+  background: #F1F5F9;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  padding: 14px 20px;
+}
+
+.action-btn.celebrate {
+  background: linear-gradient(180deg, #A855F7 0%, #7E22CE 100%);
+  color: #FFFFFF;
+}
+
+.action-btn.is-spinning {
+  background: #94A3B8;
+  color: #FFFFFF;
+  cursor: wait;
+}
+
+.pulse-attention {
+  animation: gentleBtnPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes gentleBtnPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Ortak Konfeti Katmanı */
+#confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 14px;
+  height: 22px;
+  border-radius: 3px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+
