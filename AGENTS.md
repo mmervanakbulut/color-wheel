@@ -41,6 +41,7 @@ Bu dosya, yapay zeka asistanlarının (Antigravity vb.) projede değişiklik yap
 | :--- | :--- |
 | **Yeni bir etkinlik/uygulama ekleme** | `src/activities/<yeni-etkinlik>/` oluştur + `src/data/activities.js` listesine 1 satır ekle |
 | **Ana Ekran (GridView uygulama kartları)** | `src/components/HomeGrid.jsx` ve `src/data/activities.js` |
+| **Ortak Yıldızlı Kutlama Modalı (DRY)** | `src/components/CelebrationModal.jsx` |
 | **Uygulama geçişi / URL Hash yönlendirmesi** | `src/App.jsx` |
 | **Ortak ses efektleri (tık, çark, başarı, yanlış)** | `src/utils/sound.js` |
 | **Ortak Tam Ekran ve Konfeti yardımcıları** | `src/utils/ui.js` |
@@ -60,6 +61,12 @@ Bu dosya, yapay zeka asistanlarının (Antigravity vb.) projede değişiklik yap
 | **Lego: Renk çarkı (Canvas) çizimi ve dönüş animasyonu** | `src/activities/lego-colors/engine/wheel.js` |
 | **Lego: Buton tıklamaları ve senkronizasyon** | `src/activities/lego-colors/engine/app.js` |
 | **Lego: Etkinliğe özel stiller** | `src/activities/lego-colors/styles/{layout,components}.css` |
+| **Rota ve Algoritma (`route-game`) ana kabuğu** | `src/activities/route-game/RouteGameActivity.jsx` |
+| **Rota: Temalar (Kedi/Arı/Robot/Uzay), 5×5 & 8×8 haritalar, BFS üretici** | `src/activities/route-game/config.js` |
+| **Rota: Üst bar, harita tahtası, D-Pad & kod sırası kontrolleri** | `src/activities/route-game/{RouteTopBar,RouteBoard,RouteControls}.jsx` ve `routeGame.css` |
+| **Tren Örüntü (`train-pattern`) ana kabuğu** | `src/activities/train-pattern/TrainPatternActivity.jsx` |
+| **Tren Örüntü: Vagon temaları, Kolay/Usta şablonlar, sürpriz üretici** | `src/activities/train-pattern/config.js` |
+| **Tren Örüntü: Lokomotif/vagon/ray sahnesi ve seçenekler** | `src/activities/train-pattern/{TrainTrack,PatternChoices}.jsx` ve `trainPattern.css` |
 
 ---
 
