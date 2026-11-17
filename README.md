@@ -14,7 +14,7 @@ Akıllı tahta ve sınıf içi kullanım için tasarlanmış, **GridView (Izgara
   3. **🧩 3 Seçenekli Eşleştirme:** 1'li, 2'li, 3'lü, 4'lü, 5'li, 6'lı rastgele Lego soruları ve 3 seçenek kartı.
   4. **♾️ Sonsuz Akış & `🏆 Bitir` Tuşu:** Etkinlikler öğretmen `🏆 Bitir` tuşuna basana kadar kesintisiz yeni turlarla devam eder.
 - **😄 2. Etkinlik — Duygu Zarı & Çarkı (`emotion-dice`):**
-  1. **🎲 3D Zar Modu:** 6 yüzünde 6 farklı duygu ifadesi (*Mutlu, Üzgün, Sinirli, Şaşırmış, Endişeli, Bu İş Oldu!*) bulunan 3 boyutlu küp zar. **Tek Zar** veya **Çift Zar (2'li taklit)** seçeneği.
+  1. **🎲 3D Zar Modu:** 6 yüzünde 6 farklı duygu ifadesi (*Mutlu, Üzgün, Sinirli, Şaşırmış, Endişeli, Bu İş Oldu!*) bulunan 3 boyutlu küp zar. **Tek Zar** veya **Çift Zar (1 Kız + 1 Erkek birlikte 2'li taklit)** seçeneği.
   2. **🎡 Duygu Çarkı Modu:** Dilimlerinde duygu görselleri bulunan çark ve yanında dev taklit kartı.
   3. **🧩 Duygu Eşleştirme Modu:** Üstte çıkan duygu ifadesinin aynısını alttaki 3 seçenek arasından bulup eşleştirme.
   4. **👧 Kız / 👦 Erkek Seçimi:** Üst çubuktan tek tıkla kız veya erkek karakter görsellerine geçiş.
@@ -25,6 +25,24 @@ Akıllı tahta ve sınıf içi kullanım için tasarlanmış, **GridView (Izgara
 - **🚂 4. Etkinlik — Tren Vagonu Örüntü (`train-pattern`):**
   1. **Kolay & Usta Modları:** Anasınıfı için 1 boş vagon (`AB-AB`, `AA-BB`, `AAB`) veya 1. sınıf için 2 boş vagon (`ABC-ABC`, `ABCD`).
   2. **4 Vagon Teması:** Renkli Şekiller, Neşeli Meyveler, Sevimli Hayvanlar, Uzay Treni ve **🎲 Sürpriz Tren**.
+- **🚀 5. Etkinlik — Yönler Dünyası (`directions-world`):**
+  1. **👀 Yöne Bak:** Roket, balık, uçak, uğur böceği veya dev okun hangi yöne (`Sağ, Sol, Yukarı, Aşağı`) gittiğini uzamsal artı düzeninde bulma (`4 Yön (Sağ-Sol-Yukarı-Aşağı)`, `Sağ-Sol` veya `Yukarı-Aşağı` filtresiyle).
+  2. **🔍 Ters Yön:** 2×2 ızgarada diğerlerinden farklı yöne bakan nesneyi yakalama.
+  3. **📍 Neresinde?:** Merkez nesnenin *Üstünde, Altında, Sağında, Solunda* konum kavramını bulma.
+  4. **🎡 Hareket Çarkı:** 8 dilimli çark çevirip çıkan yöne göre tüm sınıfça bedensel hareket taklidi yapma.
+- **🎨 6. Etkinlik — Piksel Kodlama (`pixel-coding`):**
+  1. **🧩 Desen Kopyala:** `4×4 Kolay` (16 şablon) veya `5×5 Usta` (16 şablon; toplam **32 tanıdık desen**) örnek piksel deseni yanındaki boş ızgaraya birebir aktarma.
+  2. **🔢 Kodla Boya:** Renk anahtarındaki sayı kodlarına (`1=Kırmızı`, `2=Mavi`...) bakarak gizli resmi ortaya çıkarma.
+  3. **🎨 Renk Değiştir & 🎲 Akıllı Sürpriz Üretici:** Aynı şeklin renk/sayı kodlarını tek tıkla karıştırma (`🎨 Renk Değiştir`), kurallı simetrik **Piksel Karakter Yüzü / Geometrik Kodlama Motifi** üretme (`🎲 Sürpriz Desen`) ve **🎨 Serbest Tasarım**.
+- **📋 7. Etkinlik — İşlem Sıralama (`step-sequence`):**
+  1. **🌱 3 Adım (Kolay) & 🚀 4 Adım (Usta):** Günlük hayat ve doğa olaylarını (*Çiçek büyütme, diş fırçalama, pasta yapımı, kurbağa döngüsü, uzay görevi vb.* toplam 16 hikaye + **🎲 Sürpriz Sıralama**) oluş sırasına göre dizme.
+- **🔓 8. Etkinlik — Sembol Şifre Çözücü (`symbol-cipher`):**
+  1. **🔑 Şifre Anahtarı Okuma:** Sembollerin (`▲, ●, ■, ◆`) karşılık geldiği meyve, hayvan, uzay veya renk ikonlarını bularak 3 veya 4 haneli kilitleri açma.
+- **🚦 9. Etkinlik — Eğer–İse Koşul Oyunu (`if-then-coding`):**
+  1. **🌦️ 2 Koşul (Kolay) & 🚦 3 Koşul (Usta):** *Hava durumu, hayvan yuvası, renk ayırma, trafik lambası, taşıt yolu ve 5 ile sayı karşılaştırma* kurallarına göre koşullu karar verme.
+- **🔁 10. Etkinlik — Döngü Atölyesi (`loop-coding`):**
+  1. **Önce Yönleri Seç ➔ Sonra Tekrar Sayısıyla Grupla (`🔁 N× [ ... ]`):** Öğrenci önce bir veya birden fazla yön okuna (`➡️` veya `➡️ ⬇️`) basar, ardından kaç kez tekrar edeceğini (`1×..5×`) seçerek **`🔁 3× [ ➡️ ⬇️ ]`** şeklinde döngü grubunu oluşturur.
+  2. **5×5 & 6×6 Haritalar ve 🎲 Sürpriz Harita:** Birden fazla döngü grubunu arka arkaya dizerek (`🔁 4× [ ➡️ ]` ➔ `🔁 3× [ ⬇️ ]`) veya merdiven gruplarıyla karakteri hedefe ulaştırma.
 
 ---
 

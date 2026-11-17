@@ -67,6 +67,15 @@ Bu dosya, yapay zeka asistanlarının (Antigravity vb.) projede değişiklik yap
 | **Tren Örüntü (`train-pattern`) ana kabuğu** | `src/activities/train-pattern/TrainPatternActivity.jsx` |
 | **Tren Örüntü: Vagon temaları, Kolay/Usta şablonlar, sürpriz üretici** | `src/activities/train-pattern/config.js` |
 | **Tren Örüntü: Lokomotif/vagon/ray sahnesi ve seçenekler** | `src/activities/train-pattern/{TrainTrack,PatternChoices}.jsx` ve `trainPattern.css` |
+| **Yönler Dünyası (`directions-world`) ana kabuğu ve üst bar** | `src/activities/directions-world/{DirectionsWorldActivity,DirectionsTopBar}.jsx` |
+| **Yönler: 4 yön sabitleri, soru üreticileri ve yönlü SVG karakterler** | `src/activities/directions-world/{config.js,DirectionVisuals.jsx,useDirectionWheel.js}` |
+| **Yönler: 4 oyun sahnesi (Yöne Bak, Ters Yön, Neresinde, Çark)** | `src/activities/directions-world/{LookStage,OddDirectionStage,WhereStage,DirectionWheelStage}.jsx` ve `directionsWorld.css` |
+| **Piksel Kodlama (`pixel-coding`) ana kabuğu ve üst bar** | `src/activities/pixel-coding/{PixelCodingActivity,PixelTopBar}.jsx` |
+| **Piksel Kodlama: 32 hazır şablon, renk karıştırıcı, akıllı üretici ve sahne** | `src/activities/pixel-coding/{patterns.js,config.js,PixelBoardStage.jsx,PixelPalette.jsx}` ve `pixelCoding.css` |
+| **İşlem Sıralama (`step-sequence`) ana kabuğu, hikayeler ve sahne** | `src/activities/step-sequence/{StepSequenceActivity,SequenceStage,config}.js*` |
+| **Sembol Şifre Çözücü (`symbol-cipher`) ana kabuğu, anahtar ve sahne** | `src/activities/symbol-cipher/{SymbolCipherActivity,CipherStage,config}.js*` |
+| **Eğer–İse Koşul Oyunu (`if-then-coding`) ana kabuğu, kurallar ve sahne** | `src/activities/if-then-coding/{IfThenCodingActivity,IfThenStage,config}.js*` |
+| **Döngü Atölyesi (`loop-coding`) ana kabuğu, harita tahtası ve döngü kontrolleri** | `src/activities/loop-coding/{LoopCodingActivity,LoopBoard,LoopControls,config}.js*` ve `loopCoding.css` |
 
 ---
 

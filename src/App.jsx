@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { ACTIVITIES } from './data/activities';
 import HomeGrid from './components/HomeGrid';
 
@@ -33,7 +33,17 @@ export default function App() {
 
   if (selectedActivity) {
     const ActivityComponent = selectedActivity.component;
-    return <ActivityComponent onBackToHome={handleBackToHome} />;
+    return (
+      <Suspense
+        fallback={
+          <div className="w-screen h-screen flex items-center justify-center text-2xl font-black text-slate-600">
+            ⏳ Etkinlik Yükleniyor...
+          </div>
+        }
+      >
+        <ActivityComponent onBackToHome={handleBackToHome} />
+      </Suspense>
+    );
   }
 
   return <HomeGrid onSelectActivity={handleSelectActivity} />;

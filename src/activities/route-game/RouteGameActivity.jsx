@@ -218,6 +218,7 @@ export default function RouteGameActivity({ onBackToHome }) {
         <RouteBoard
           level={level}
           theme={theme}
+          gameMode={gameMode}
           heroPos={heroPos}
           heroFacing={heroFacing}
           visitedCells={visitedCells}

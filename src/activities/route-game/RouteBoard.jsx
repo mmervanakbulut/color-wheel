@@ -3,6 +3,7 @@ import React from 'react';
 export default function RouteBoard({
   level,
   theme,
+  gameMode,
   heroPos,
   heroFacing,
   visitedCells,
@@ -24,10 +25,10 @@ export default function RouteBoard({
     return null;
   };
 
-  const iconSizeClass = size >= 8 ? 'text-2xl sm:text-3xl' : 'text-4xl sm:text-5xl';
+  const iconSizeClass = size >= 8 ? 'text-3xl sm:text-4xl' : 'text-5xl sm:text-6xl';
 
   return (
-    <div className="route-board-frame">
+    <div className={`route-board-frame ${gameMode === 'queue' ? 'is-queue-mode' : ''}`}>
       <div
         className="route-grid"
         style={{
@@ -51,11 +52,11 @@ export default function RouteBoard({
             <div
               key={key}
               onClick={() => adjDir && onStepDirection(adjDir)}
-              className={`route-cell ${isVisited && !isHero ? 'is-visited' : ''} ${
-                isTarget ? 'is-target' : ''
-              } ${isObstacle ? 'is-obstacle' : ''} ${isCollision ? 'is-collision' : ''} ${
-                adjDir ? 'is-adjacent' : ''
-              }`}
+              className={`route-cell ${isHero ? 'is-hero' : ''} ${
+                isVisited && !isHero ? 'is-visited' : ''
+              } ${isTarget ? 'is-target' : ''} ${isObstacle ? 'is-obstacle' : ''} ${
+                isCollision ? 'is-collision' : ''
+              } ${adjDir ? 'is-adjacent' : ''}`}
               title={adjDir ? 'Bu yöne gitmek için dokun' : undefined}
             >
               {isHero ? (

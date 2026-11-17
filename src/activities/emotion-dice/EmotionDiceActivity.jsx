@@ -257,30 +257,32 @@ export default function EmotionDiceActivity({ onBackToHome }) {
         </div>
 
         <div className="toolbar-group">
-          <div className="segmented-control" role="group" aria-label="Karakter Seçimi">
-            <button
-              type="button"
-              className={`seg-btn ${character === 'girl' ? 'active' : ''}`}
-              onClick={() => {
-                if (isRolling) return;
-                playClick();
-                setCharacter('girl');
-              }}
-            >
-              👧 Kız
-            </button>
-            <button
-              type="button"
-              className={`seg-btn ${character === 'boy' ? 'active' : ''}`}
-              onClick={() => {
-                if (isRolling) return;
-                playClick();
-                setCharacter('boy');
-              }}
-            >
-              👦 Erkek
-            </button>
-          </div>
+          {(mode !== 'dice' || diceCount !== 2) && (
+            <div className="segmented-control" role="group" aria-label="Karakter Seçimi">
+              <button
+                type="button"
+                className={`seg-btn ${character === 'girl' ? 'active' : ''}`}
+                onClick={() => {
+                  if (isRolling) return;
+                  playClick();
+                  setCharacter('girl');
+                }}
+              >
+                👧 Kız
+              </button>
+              <button
+                type="button"
+                className={`seg-btn ${character === 'boy' ? 'active' : ''}`}
+                onClick={() => {
+                  if (isRolling) return;
+                  playClick();
+                  setCharacter('boy');
+                }}
+              >
+                👦 Erkek
+              </button>
+            </div>
+          )}
 
           {mode === 'dice' && (
             <div className="segmented-control" role="group" aria-label="Zar Sayısı">

@@ -1,0 +1,85 @@
+/* Döngü Atölyesi harita ızgarası ve döngü bloğu stilleri */
+
+.loop-board-frame {
+  background: #E2E8F0;
+  padding: 10px;
+  border-radius: 24px;
+  border: 3px solid #94A3B8;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+}
+
+.loop-grid {
+  display: grid;
+  gap: 6px;
+  width: min(50vh, 84vw);
+  height: min(50vh, 84vw);
+  max-width: 480px;
+  max-height: 480px;
+}
+
+.loop-cell {
+  background: #FFFFFF;
+  border: 2.5px solid #CBD5E1;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.loop-cell.is-visited {
+  background: #E0F2FE;
+  border-color: #38BDF8;
+}
+
+.loop-cell.is-hero {
+  background: linear-gradient(135deg, #BBF7D0 0%, #4ADE80 100%) !important;
+  border: 3px solid #15803D !important;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.28), 0 6px 14px rgba(21, 128, 61, 0.22);
+  z-index: 2;
+}
+
+.loop-cell.is-target {
+  background: linear-gradient(135deg, #FEF08A 0%, #FDE047 100%);
+  border: 3px solid #D97706;
+}
+
+.loop-cell.is-obstacle {
+  background: #CBD5E1;
+  border-color: #94A3B8;
+}
+
+.loop-cell.is-collision {
+  background: #FECACA !important;
+  border-color: #DC2626 !important;
+  animation: loopShake 0.4s ease;
+}
+
+.loop-dir-btn {
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 18px;
+  box-shadow: 0 5px 0 rgba(15, 23, 42, 0.18);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  cursor: pointer;
+}
+
+.loop-dir-btn:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 rgba(15, 23, 42, 0.18);
+}
+
+@keyframes loopShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-7px); }
+  50% { transform: translateX(7px); }
+  75% { transform: translateX(-5px); }
+}
+
+@media (max-width: 900px) {
+  .loop-grid {
+    width: min(42vh, 88vw);
+    height: min(42vh, 88vw);
+  }
+}

@@ -23,11 +23,19 @@ export default function DiceStage({
       <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20">
         {Array.from({ length: diceCount }, (_, cubeIdx) => {
           const winnerEm = EMOTIONS[diceWinners[cubeIdx]] || EMOTIONS[0];
+          const cubeCharacter = diceCount === 2 ? (cubeIdx === 0 ? 'girl' : 'boy') : character;
+          const isGirlCube = cubeCharacter === 'girl';
           return (
             <div key={cubeIdx} className="flex flex-col items-center gap-5">
               {diceCount === 2 && (
-                <span className="px-4 py-1 rounded-full bg-slate-100 border-2 border-slate-300 font-black text-slate-700 text-base">
-                  {cubeIdx + 1}. İfade
+                <span
+                  className={`px-4 py-1 rounded-full border-2 font-black text-base ${
+                    isGirlCube
+                      ? 'bg-pink-50 border-pink-300 text-pink-700'
+                      : 'bg-sky-50 border-sky-300 text-sky-700'
+                  }`}
+                >
+                  {isGirlCube ? '👧 Kız' : '👦 Erkek'}
                 </span>
               )}
 
@@ -50,7 +58,7 @@ export default function DiceStage({
                       }`}
                     >
                       <img
-                        src={getImgForCharacter(em, character)}
+                        src={getImgForCharacter(em, cubeCharacter)}
                         alt={em.title}
                         draggable="false"
                       />

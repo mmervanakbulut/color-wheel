@@ -25,6 +25,12 @@
     2. `emotion-dice` (`EmotionDiceActivity`) — 3D Zar • Çark • İfade Taklidi
     3. `route-game` (`RouteGameActivity`) — 8×8 & 5×5 Harita • Tek Adım • Algoritma
     4. `train-pattern` (`TrainPatternActivity`) — Kolay & Usta • Şekil, Meyve, Hayvan
+    5. `directions-world` (`DirectionsWorldActivity`) — Sağ • Sol • Yukarı • Aşağı • Çark
+    6. `pixel-coding` (`PixelCodingActivity`) — Desen Kopyala • Kodla Boya • 4×4 & 5×5
+    7. `step-sequence` (`StepSequenceActivity`) — Önce Hangisi? • 3 ve 4 Adımlı Algoritma
+    8. `symbol-cipher` (`SymbolCipherActivity`) — Anahtara Bak • Şifreyi Çöz • 3 & 4 Haneli
+    9. `if-then-coding` (`IfThenCodingActivity`) — Kuralı Oku • Karar Ver • 2 ve 3 Koşullu
+    10. `loop-coding` (`LoopCodingActivity`) — 5×5 & 6×6 Harita • Döngü Blokları • Grup Döngüsü
 
 ### `src/components/HomeGrid.jsx`
 - **`HomeGrid({ onSelectActivity })`**: Uygulamaları büyük ikon ve isimleriyle GridView olarak gösterir; sağ üstte `⛶ Tam Ekran` (`toggleFullscreen`) butonu bulunur.
@@ -50,7 +56,7 @@
 
 Tek Sorumluluk (SRP) ve maksimum 250 satır kuralına uygun olarak 5 modüle ayrılmıştır:
 - **`config.js`** (~80 satır): `EMOTIONS` (6 duygu tanımı: `mutlu`, `uzgun`, `sinirli`, `sasirma`, `endiseli`, `basardim`) ve `getImgForCharacter(emotion, character)` yardımcısı.
-- **`DiceStage.jsx`** (~75 satır): 3D Küp Zar sahnesi (`diceCount` 1 veya 2, küp yüzey dönüşü ve duygu etiketi).
+- **`DiceStage.jsx`** (~90 satır): 3D Küp Zar sahnesi (`diceCount` 1 veya 2; Çift Zar modunda 1 Kız + 1 Erkek zarı, küp yüzey dönüşü ve duygu etiketi).
 - **`WheelStage.jsx`** (~145 satır): 6 dilimli görsel Duygu Çarkı (Canvas) ve sağdaki büyük taklit kartı.
 - **`QuizStage.jsx`** (~75 satır): Üstte hedef duygu ve altta karşı karakterli 3 seçenek kartı ile eşleştirme sahnesi.
 - **`EmotionDiceActivity.jsx`** (~240 satır): Üst araç çubuğu (`🎲 3D Zar | 🎡 Çark | 🧩 Eşleştir`, `👧 Kız | 👦 Erkek`, `🎲 Tek Zar | 🎲🎲 Çift Zar`), mod yönetimi ve alt aksiyon çubuğu.
@@ -77,3 +83,60 @@ Tek Sorumluluk (SRP) ve maksimum 250 satır kuralına uygun olarak 5 modüle ayr
 - **`PatternChoices.jsx`**: Alt seçenek butonları ve `🔄 Baştan` butonu.
 - **`TrainPatternActivity.jsx`**: Kolay/Usta modları, vagon teması seçici, görev/sürpriz geçişi, yanlış seçim uyarısı ve kutlama modalı.
 - **`trainPattern.css`**: Lokomotif, vagon, tekerlek, ray ve titreşim stilleri.
+
+---
+
+## 7. Etkinlik 5: Yönler Dünyası (`src/activities/directions-world/`)
+
+- **`config.js`**: `DIRECTIONS` (`up`, `right`, `down`, `left`), `SPRITE_TYPES`, `ANCHOR_PAIRS`, `WHEEL_SLICES` ve `createLookQuestion` / `createOddQuestion` / `createWhereQuestion` üreticileri.
+- **`DirectionVisuals.jsx`**: 4 yöne baş aşağı düşmeden dönen özel SVG nesneler (`rocket`, `fish`, `plane`, `ladybug`, `arrow`).
+- **`LookStage.jsx`**: `👀 Yöne Bak` — Ortadaki karakteri çevreleyen artı düzeninde yön butonları (`4 Yön (Sağ-Sol-Yukarı-Aşağı)`, `Sağ-Sol`, `Yukarı-Aşağı`).
+- **`OddDirectionStage.jsx`**: `🔍 Ters Yön` — 2×2 kartlarda farklı yöne bakanı bulma sahnesi.
+- **`WhereStage.jsx`**: `📍 Neresinde?` — Merkez nesneye göre `Üstünde / Altında / Sağında / Solunda` konum ilişkisi sahnesi.
+- **`DirectionWheelStage.jsx`** + **`useDirectionWheel.js`**: 8 dilimli Yön Çarkı (Canvas) ve sınıfça hareket taklit kartı.
+- **`DirectionsTopBar.jsx`** + **`DirectionsWorldActivity.jsx`**: Mod/kapsam seçimi, ok tuşu desteği, puan sayacı ve kutlama modalı.
+- **`directionsWorld.css`**: 3D yön kartı, sallanma ve zıplama animasyonları.
+
+---
+
+## 8. Etkinlik 6: Piksel Kodlama (`src/activities/pixel-coding/`)
+
+- **`patterns.js`**: `EASY_PATTERNS` (`4×4` — 16 tanıdık desen) ve `MASTER_PATTERNS` (`5×5` — 16 tanıdık desen; toplam 32 şablon).
+- **`config.js`**: `PIXEL_COLORS`, `createEmptyGrid`, `getUsedColorCodes`, `remixPatternColors` (mevcut şeklin renk/sayı kodlarını karıştırır) ve `createSurprisePattern` (kurallı Piksel Karakter Yüzü, Geometrik Kodlama Motifi ve Renk Sürprizli Şablon üreticisi).
+- **`PixelTopBar.jsx`**: Mod seçimi (`Desen Kopyala | Kodla Boya | Serbest`), boyut (`4×4 Kolay | 5×5 Usta`), desen gezinme ve puan.
+- **`PixelBoardStage.jsx`**: Yan yana örnek + boyama tahtası, kodlu piksel ızgarası ve serbest çizim alanı.
+- **`PixelPalette.jsx`**: Renk/kod butonları ve silgi aracı.
+- **`PixelCodingActivity.jsx`** & **`pixelCoding.css`**: Tamamlanma kontrolü, hata kontrolü (`💡 Kontrol Et`), `🎨 Renk Değiştir`, `🎲 Sürpriz Desen` ve kutlama modalı.
+
+---
+
+## 9. Etkinlik 7: İşlem Sıralama (`src/activities/step-sequence/`)
+
+- **`config.js`**: `EASY_SEQUENCES` (3 adımlı 8 hikaye), `MASTER_SEQUENCES` (4 adımlı 8 hikaye), `shuffleSteps`, `createSurpriseSequence`.
+- **`SequenceStage.jsx`**: Üstte `1. -> 2. -> 3. -> 4.` hedef yuvaları ve altta karışık adım kartları.
+- **`StepSequenceActivity.jsx`**: Kolay/Usta geçişi, hikaye gezgini, sürpriz sıralama ve kutlama modalı.
+
+---
+
+## 10. Etkinlik 8: Sembol Şifre Çözücü (`src/activities/symbol-cipher/`)
+
+- **`config.js`**: `CODE_SYMBOLS` (`▲, ●, ■, ◆`), `CIPHER_THEMES` (`fruits`, `animals`, `space`, `shapes`) ve `createCipherPuzzle`.
+- **`CipherStage.jsx`**: Üstte sembol anahtar tablosu, ortada şifreli kilit yuvaları ve altta seçenek butonları.
+- **`SymbolCipherActivity.jsx`**: 3 Haneli (Kolay) / 4 Haneli (Usta) zorluk, tema seçici ve yeni şifre üretimi.
+
+---
+
+## 11. Etkinlik 9: Eğer – İse Koşul Oyunu (`src/activities/if-then-coding/`)
+
+- **`config.js`**: `EASY_RULES` (2 dallı koşullar), `MASTER_RULES` (3 dallı koşullar ve sayı karşılaştırma), `buildQuestionDeck`.
+- **`IfThenStage.jsx`**: Üstte `EĞER ... ➔ ...` kural kartları, ortada gelen durum/nesne kartı ve altta karar butonları.
+- **`IfThenCodingActivity.jsx`**: 5 adımlık tur takibi, Kolay/Usta geçişi ve kutlama modalı.
+
+---
+
+## 12. Etkinlik 10: Döngü Atölyesi (`src/activities/loop-coding/`)
+
+- **`config.js`**: `LOOP_THEMES` (`frog`, `robot`, `space`, `bee`), `DIR_META`, `LEVELS_5X5`, `LEVELS_6X6`, `parseLoopLevel`, `createRandomLoopLevel` ve `expandProgramToSteps`.
+- **`LoopBoard.jsx`**: `5×5` ve `6×6` harita ızgarası, karakter/hedef/engel ve adım izi görünümü.
+- **`LoopControls.jsx`**: `1️⃣ Yön Seç` (`⬆️ ⬇️ ⬅️ ➡️` ile taslak grup oluşturma) ➔ `2️⃣ Tekrarla` (`1×..5×` seçerek `🔁 N× [ ... ]` döngü grubuna paketleme) ➔ `▶️ BAŞLAT`.
+- **`LoopCodingActivity.jsx`** & **`loopCoding.css`**: Adım adım döngü yürütme motoru, aktif tekrar sayacı (`(2/3)`), çarpışma kontrolü ve kutlama modalı.
