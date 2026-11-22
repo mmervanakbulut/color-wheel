@@ -31,6 +31,7 @@
     8. `symbol-cipher` (`SymbolCipherActivity`) — Anahtara Bak • Şifreyi Çöz • 3 & 4 Haneli
     9. `if-then-coding` (`IfThenCodingActivity`) — Kuralı Oku • Karar Ver • 2 ve 3 Koşullu
     10. `loop-coding` (`LoopCodingActivity`) — 5×5 & 6×6 Harita • Döngü Blokları • Grup Döngüsü
+    11. `debug-coding` (`DebugCodingActivity`) — Bozuk Kodu Bul • Eksik veya Yanlış Adımı Düzelt
 
 ### `src/components/HomeGrid.jsx`
 - **`HomeGrid({ onSelectActivity })`**: Uygulamaları büyük ikon ve isimleriyle GridView olarak gösterir; sağ üstte `⛶ Tam Ekran` (`toggleFullscreen`) butonu bulunur.
@@ -112,7 +113,7 @@ Tek Sorumluluk (SRP) ve maksimum 250 satır kuralına uygun olarak 5 modüle ayr
 
 ## 9. Etkinlik 7: İşlem Sıralama (`src/activities/step-sequence/`)
 
-- **`config.js`**: `EASY_SEQUENCES` (3 adımlı 8 hikaye), `MASTER_SEQUENCES` (4 adımlı 8 hikaye), `shuffleSteps`, `createSurpriseSequence`.
+- **`stories.js`** & **`config.js`**: `EASY_SEQUENCES` (3 adımlı 16 hikaye), `MASTER_SEQUENCES` (4 adımlı 16 hikaye; toplam 32 işlem hikayesi), `shuffleSteps` ve `createSurpriseSequence` (Azdan Çoğa, Artan Sayı Zinciri, Lego Kule İnşası, Ay Evreleri).
 - **`SequenceStage.jsx`**: Üstte `1. -> 2. -> 3. -> 4.` hedef yuvaları ve altta karışık adım kartları.
 - **`StepSequenceActivity.jsx`**: Kolay/Usta geçişi, hikaye gezgini, sürpriz sıralama ve kutlama modalı.
 
@@ -140,3 +141,12 @@ Tek Sorumluluk (SRP) ve maksimum 250 satır kuralına uygun olarak 5 modüle ayr
 - **`LoopBoard.jsx`**: `5×5` ve `6×6` harita ızgarası, karakter/hedef/engel ve adım izi görünümü.
 - **`LoopControls.jsx`**: `1️⃣ Yön Seç` (`⬆️ ⬇️ ⬅️ ➡️` ile taslak grup oluşturma) ➔ `2️⃣ Tekrarla` (`1×..5×` seçerek `🔁 N× [ ... ]` döngü grubuna paketleme) ➔ `▶️ BAŞLAT`.
 - **`LoopCodingActivity.jsx`** & **`loopCoding.css`**: Adım adım döngü yürütme motoru, aktif tekrar sayacı (`(2/3)`), çarpışma kontrolü ve kutlama modalı.
+
+---
+
+## 13. Etkinlik 11: Hata Ayıklama (`src/activities/debug-coding/`)
+
+- **`config.js`**: `DEBUG_THEMES` (`robot`, `cat`, `bee`, `space`), `DIR_META`, `LEVELS_EASY` (`5×5`), `LEVELS_MASTER` (`6×6`), `parseDebugLevel` ve `createRandomDebugLevel` (`❓` eksik adım, yanlış yön veya fazla hareket içeren görevler).
+- **`DebugBoard.jsx`**: `5×5` ve `6×6` harita tahtası, karakter, hedef, engel ve çarpışma animasyonu.
+- **`DebugControls.jsx`**: Tıklanıp düzenlenebilen yönerge adımları (`1. ➡️, 2. ❓, 3. ⬇️`), `➕ Adım Ekle`, `🗑️ Seçiliyi Sil`, `🔄 İlk Hali`, yön düzeltme butonları ve `▶️ YÖNERGEYİ DENE`.
+- **`DebugCodingActivity.jsx`** & **`debugCoding.css`**: Adım adım yönerge test motoru; çarpışma veya hata anında hatalı adımı (`🐞`) otomatik kırmızı işaretleyip seçili hale getirme ve kutlama modalı.

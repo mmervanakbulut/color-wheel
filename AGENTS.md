@@ -72,10 +72,11 @@ Bu dosya, yapay zeka asistanlarının (Antigravity vb.) projede değişiklik yap
 | **Yönler: 4 oyun sahnesi (Yöne Bak, Ters Yön, Neresinde, Çark)** | `src/activities/directions-world/{LookStage,OddDirectionStage,WhereStage,DirectionWheelStage}.jsx` ve `directionsWorld.css` |
 | **Piksel Kodlama (`pixel-coding`) ana kabuğu ve üst bar** | `src/activities/pixel-coding/{PixelCodingActivity,PixelTopBar}.jsx` |
 | **Piksel Kodlama: 32 hazır şablon, renk karıştırıcı, akıllı üretici ve sahne** | `src/activities/pixel-coding/{patterns.js,config.js,PixelBoardStage.jsx,PixelPalette.jsx}` ve `pixelCoding.css` |
-| **İşlem Sıralama (`step-sequence`) ana kabuğu, hikayeler ve sahne** | `src/activities/step-sequence/{StepSequenceActivity,SequenceStage,config}.js*` |
+| **İşlem Sıralama (`step-sequence`) ana kabuğu, 32 hikaye ve sahne** | `src/activities/step-sequence/{StepSequenceActivity,SequenceStage,stories,config}.js*` |
 | **Sembol Şifre Çözücü (`symbol-cipher`) ana kabuğu, anahtar ve sahne** | `src/activities/symbol-cipher/{SymbolCipherActivity,CipherStage,config}.js*` |
 | **Eğer–İse Koşul Oyunu (`if-then-coding`) ana kabuğu, kurallar ve sahne** | `src/activities/if-then-coding/{IfThenCodingActivity,IfThenStage,config}.js*` |
 | **Döngü Atölyesi (`loop-coding`) ana kabuğu, harita tahtası ve döngü kontrolleri** | `src/activities/loop-coding/{LoopCodingActivity,LoopBoard,LoopControls,config}.js*` ve `loopCoding.css` |
+| **Hata Ayıklama (`debug-coding`) ana kabuğu, harita tahtası ve yönerge düzeltici** | `src/activities/debug-coding/{DebugCodingActivity,DebugBoard,DebugControls,config}.js*` ve `debugCoding.css` |
 
 ---
 

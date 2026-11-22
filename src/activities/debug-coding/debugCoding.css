@@ -1,0 +1,71 @@
+/* Hata Ayıklama (Debugging) etkinliği tahta ve yönerge adımı stilleri */
+
+.debug-board-frame {
+  background: #E2E8F0;
+  padding: 10px;
+  border-radius: 24px;
+  border: 3px solid #94A3B8;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+}
+
+.debug-grid {
+  display: grid;
+  gap: 6px;
+  width: min(48vh, 84vw);
+  height: min(48vh, 84vw);
+  max-width: 460px;
+  max-height: 460px;
+}
+
+.debug-cell {
+  background: #FFFFFF;
+  border: 2.5px solid #CBD5E1;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.debug-cell.is-visited {
+  background: #E0F2FE;
+  border-color: #38BDF8;
+}
+
+.debug-cell.is-hero {
+  background: linear-gradient(135deg, #BBF7D0 0%, #4ADE80 100%) !important;
+  border: 3px solid #15803D !important;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.28), 0 6px 14px rgba(21, 128, 61, 0.22);
+  z-index: 2;
+}
+
+.debug-cell.is-target {
+  background: linear-gradient(135deg, #FEF08A 0%, #FDE047 100%);
+  border: 3px solid #D97706;
+}
+
+.debug-cell.is-obstacle {
+  background: #CBD5E1;
+  border-color: #94A3B8;
+}
+
+.debug-cell.is-collision {
+  background: #FECACA !important;
+  border-color: #DC2626 !important;
+  animation: debugShake 0.4s ease;
+}
+
+@keyframes debugShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-7px); }
+  50% { transform: translateX(7px); }
+  75% { transform: translateX(-5px); }
+}
+
+@media (max-width: 900px) {
+  .debug-grid {
+    width: min(40vh, 88vw);
+    height: min(40vh, 88vw);
+  }
+}

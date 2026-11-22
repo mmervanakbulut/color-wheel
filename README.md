@@ -35,7 +35,7 @@ Akıllı tahta ve sınıf içi kullanım için tasarlanmış, **GridView (Izgara
   2. **🔢 Kodla Boya:** Renk anahtarındaki sayı kodlarına (`1=Kırmızı`, `2=Mavi`...) bakarak gizli resmi ortaya çıkarma.
   3. **🎨 Renk Değiştir & 🎲 Akıllı Sürpriz Üretici:** Aynı şeklin renk/sayı kodlarını tek tıkla karıştırma (`🎨 Renk Değiştir`), kurallı simetrik **Piksel Karakter Yüzü / Geometrik Kodlama Motifi** üretme (`🎲 Sürpriz Desen`) ve **🎨 Serbest Tasarım**.
 - **📋 7. Etkinlik — İşlem Sıralama (`step-sequence`):**
-  1. **🌱 3 Adım (Kolay) & 🚀 4 Adım (Usta):** Günlük hayat ve doğa olaylarını (*Çiçek büyütme, diş fırçalama, pasta yapımı, kurbağa döngüsü, uzay görevi vb.* toplam 16 hikaye + **🎲 Sürpriz Sıralama**) oluş sırasına göre dizme.
+  1. **🌱 3 Adım (16 Hikaye) & 🚀 4 Adım (16 Hikaye — Toplam 32 İşlem):** Günlük yaşam, fen/doğa, trafik ve robot çalıştırma süreçlerini oluş sırasına göre dizme + 4 farklı modda (**Azdan Çoğa, Artan Sayı Zinciri, Kule İnşası, Ay Evreleri**) **🎲 Sürpriz Sıralama**.
 - **🔓 8. Etkinlik — Sembol Şifre Çözücü (`symbol-cipher`):**
   1. **🔑 Şifre Anahtarı Okuma:** Sembollerin (`▲, ●, ■, ◆`) karşılık geldiği meyve, hayvan, uzay veya renk ikonlarını bularak 3 veya 4 haneli kilitleri açma.
 - **🚦 9. Etkinlik — Eğer–İse Koşul Oyunu (`if-then-coding`):**
@@ -43,6 +43,8 @@ Akıllı tahta ve sınıf içi kullanım için tasarlanmış, **GridView (Izgara
 - **🔁 10. Etkinlik — Döngü Atölyesi (`loop-coding`):**
   1. **Önce Yönleri Seç ➔ Sonra Tekrar Sayısıyla Grupla (`🔁 N× [ ... ]`):** Öğrenci önce bir veya birden fazla yön okuna (`➡️` veya `➡️ ⬇️`) basar, ardından kaç kez tekrar edeceğini (`1×..5×`) seçerek **`🔁 3× [ ➡️ ⬇️ ]`** şeklinde döngü grubunu oluşturur.
   2. **5×5 & 6×6 Haritalar ve 🎲 Sürpriz Harita:** Birden fazla döngü grubunu arka arkaya dizerek (`🔁 4× [ ➡️ ]` ➔ `🔁 3× [ ⬇️ ]`) veya merdiven gruplarıyla karakteri hedefe ulaştırma.
+- **🐞 11. Etkinlik — Hata Ayıklama (`debug-coding`):**
+  1. **Eksik (`❓`), Yanlış veya Fazla Adımı Düzeltme:** Karakterin hedefe ulaşması için önceden yazılmış yönergeyi **`▶️ YÖNERGEYİ DENE`** ile test etme; hatalı adıma (`🐞`) dokunup doğru yönle değiştirme, eksik **`❓`** boşluğunu doldurma, **`➕ Adım Ekle`** veya **`🗑️ Seçiliyi Sil`** ile bozuk kodu onarma.
 
 ---
 

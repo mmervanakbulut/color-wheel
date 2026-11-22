@@ -10,6 +10,7 @@ const StepSequenceActivity = lazy(() => import('../activities/step-sequence/Step
 const SymbolCipherActivity = lazy(() => import('../activities/symbol-cipher/SymbolCipherActivity'));
 const IfThenCodingActivity = lazy(() => import('../activities/if-then-coding/IfThenCodingActivity'));
 const LoopCodingActivity = lazy(() => import('../activities/loop-coding/LoopCodingActivity'));
+const DebugCodingActivity = lazy(() => import('../activities/debug-coding/DebugCodingActivity'));
 
 /**
  * Tüm etkileşimli uygulamaların merkezi listesi (GridView).
@@ -115,5 +116,15 @@ export const ACTIVITIES = [
     cardBg: 'bg-gradient-to-br from-violet-50 via-white to-amber-50',
     borderColor: 'border-violet-300 hover:border-indigo-500',
     component: LoopCodingActivity,
+  },
+  {
+    id: 'debug-coding',
+    title: 'Hata Ayıklama',
+    subtitle: 'Bozuk Kodu Bul • Eksik veya Yanlış Adımı Düzelt',
+    icon: '🐞',
+    accentBg: 'from-rose-500 via-amber-500 to-emerald-500',
+    cardBg: 'bg-gradient-to-br from-rose-50 via-white to-emerald-50',
+    borderColor: 'border-rose-300 hover:border-emerald-500',
+    component: DebugCodingActivity,
   },
 ];
