@@ -1,6 +1,6 @@
 /**
  * @file src/activities/route-game/routeGame.css
- * @description Rota & Algoritma oyunu harita ızgarası, 3D yön butonları ve animasyon stilleri.
+ * @description Rota & Algoritma oyunu harita ızgarası, elmas hücreleri ve sağ rota paneli stilleri.
  */
 
 .route-board-frame {
@@ -17,17 +17,27 @@
 .route-grid {
   display: grid;
   gap: 6px;
-  width: min(66vh, 90vw);
-  height: min(66vh, 90vw);
-  max-width: 680px;
-  max-height: 680px;
+  width: min(72vh, 56vw);
+  height: min(72vh, 56vw);
+  max-width: 650px;
+  max-height: 650px;
 }
 
-.route-board-frame.is-queue-mode .route-grid {
-  width: min(56vh, 86vw);
-  height: min(56vh, 86vw);
-  max-width: 580px;
-  max-height: 580px;
+.route-board-frame.is-instant-mode .route-grid {
+  width: min(65vh, 88vw);
+  height: min(65vh, 88vw);
+  max-width: 660px;
+  max-height: 660px;
+}
+
+.route-cell.is-adjacent {
+  cursor: pointer;
+}
+
+.route-cell.is-adjacent:hover {
+  background: #EFF6FF;
+  border-color: #60A5FA;
+  transform: scale(1.04);
 }
 
 .route-cell {
@@ -42,16 +52,6 @@
   overflow: hidden;
 }
 
-.route-cell.is-adjacent {
-  cursor: pointer;
-}
-
-.route-cell.is-adjacent:hover {
-  background: #EFF6FF;
-  border-color: #60A5FA;
-  transform: scale(1.04);
-}
-
 .route-cell.is-visited {
   background: #E0F2FE;
   border-color: #7DD3FC;
@@ -62,6 +62,16 @@
   border: 3px solid #15803D !important;
   box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.28), 0 6px 14px rgba(21, 128, 61, 0.22);
   z-index: 2;
+}
+
+.route-cell.is-gem {
+  background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+  border: 2.5px solid #0284C7;
+}
+
+.route-cell.is-gem-collected {
+  background: #DCFCE7;
+  border-color: #86EFAC;
 }
 
 .route-cell.is-target {
@@ -92,24 +102,30 @@
   animation: cellShake 0.45s ease;
 }
 
+.route-gem-icon {
+  animation: gemFloat 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 3px 5px rgba(2, 132, 199, 0.28));
+}
+
 .route-footprint {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
-  background: #38BDF8;
-  opacity: 0.7;
+  background: #0284C7;
+  opacity: 0.75;
 }
 
 /* 3D Renk Kodlu Yön Tuşları */
 .dpad-3d-btn {
-  width: 68px;
-  height: 62px;
+  height: 58px;
   border-radius: 18px;
   border: 3px solid rgba(15, 23, 42, 0.16);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.85rem;
+  gap: 6px;
+  font-size: 1.55rem;
+  font-weight: 900;
   color: #FFFFFF;
   cursor: pointer;
   box-shadow: 0 5px 0 rgba(15, 23, 42, 0.22);
@@ -136,24 +152,20 @@
   50% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
 }
 
+@keyframes gemFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.08); }
+}
+
 @keyframes cellShake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-6px) rotate(-6deg); }
   75% { transform: translateX(6px) rotate(6deg); }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .route-grid {
-    width: min(54vh, 92vw);
-    height: min(54vh, 92vw);
-  }
-  .route-board-frame.is-queue-mode .route-grid {
-    width: min(46vh, 90vw);
-    height: min(46vh, 90vw);
-  }
-  .dpad-3d-btn {
-    width: 58px;
-    height: 54px;
-    font-size: 1.5rem;
+    width: min(46vh, 88vw);
+    height: min(46vh, 88vw);
   }
 }

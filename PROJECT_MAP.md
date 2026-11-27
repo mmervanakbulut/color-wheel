@@ -68,12 +68,12 @@ Tek Sorumluluk (SRP) ve maksimum 250 satır kuralına uygun olarak 5 modüle ayr
 
 ## 5. Etkinlik 3: Rota ve Algoritma (`src/activities/route-game/`)
 
-- **`config.js`**: `ROUTE_THEMES` (`cat`, `bee`, `robot`, `space`), `DIRECTION_VECTORS`, `LEVELS_5X5`, `LEVELS_8X8`, `parseGrid`, `findShortestPathLength`, `createVerifiedRandomLevel(size)`.
-- **`RouteTopBar.jsx`**: Mod (`Tek Adım` | `Algoritma`), harita boyutu (`5×5` | `8×8`), karakter teması, görev gezinme (`◀ ▶ 🎲 Sürpriz`), ses ve tam ekran.
-- **`RouteBoard.jsx`**: `5×5` veya `8×8` harita ızgarası, karakter/hedef/engel hücreleri ve tek adım modunda komşu hücreye dokunarak ilerleme.
-- **`RouteControls.jsx`**: Algoritma kod sırası (`📋 KOD SIRASI`), 3D renkli yön butonları, `▶️ BAŞLAT`, `⌫ Sil`, `🔄 Baştan`.
-- **`RouteGameActivity.jsx`**: Oyun state yönetimi, BFS onaylı sürpriz haritalar, çarpışma uyarı banner'ı ve yıldızlı kutlama modalı.
-- **`routeGame.css`**: Harita ızgarası, 3D D-Pad butonları ve sallanma/nabız animasyonları.
+- **`config.js`**: `ROUTE_THEMES` (`cat`, `bee`, `robot`, `space`), `DIRECTION_VECTORS`, `LEVELS_5X5` ve `LEVELS_8X8` (`💎` elmaslı haritalar), `parseGrid`, `findShortestPathLength`, `createVerifiedRandomLevel(size, withGems)`.
+- **`RouteTopBar.jsx`**: Mod (`👆 Tek Adım` — ilk basışta hareket eden elmassız/listesiz mod | `💎 Elmaslı Algoritma` — sağ panelde rota listeli mod + `💎 Elmas: Açık/Kapalı`), harita boyutu (`5×5` | `8×8`), karakter teması ve görev gezinme.
+- **`RouteBoard.jsx`**: `5×5` veya `8×8` harita ızgarası, karakter/hedef/elmas (`💎` ➔ `✨`)/engel hücreleri ve Tek Adım modunda komşu hücreye dokunarak anında ilerleme.
+- **`RouteControls.jsx`**: Tek Adım modunda sade alt yön tuşları; Algoritma modunda sağ tarafta dikey Rota ve Kodlama Paneli (`💎` elmas sayacı, numaralı hareket listesi olan `📋 Rota Alanı`, 3D yön butonları ve `▶️ BAŞLAT`).
+- **`RouteGameActivity.jsx`**: Rota kuyruğu yürütme motoru, elmas toplama kontrolü, BFS onaylı sürpriz haritalar ve yıldızlı kutlama modalı.
+- **`routeGame.css`**: İki sütunlu harita ızgarası, elmas yüzme animasyonu ve 3D yön butonları.
 
 ---
 

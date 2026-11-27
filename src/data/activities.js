@@ -40,7 +40,7 @@ export const ACTIVITIES = [
   {
     id: 'route-game',
     title: 'Rota ve Algoritma',
-    subtitle: '8×8 & 5×5 Harita • Tek Adım • Algoritma',
+    subtitle: '5×5 & 8×8 Harita • 💎 Elmas Toplama • Rota Kodlama',
     icon: '🧭',
     accentBg: 'from-emerald-400 via-sky-500 to-blue-600',
     cardBg: 'bg-gradient-to-br from-emerald-50 via-white to-sky-50',

@@ -7,13 +7,14 @@ export default function RouteBoard({
   heroPos,
   heroFacing,
   visitedCells,
+  collectedGems,
   isDizzy,
   collisionCellKey,
   canClickAdjacent,
   onStepDirection,
 }) {
   if (!level) return null;
-  const { size, target, obstacles } = level;
+  const { size, target, obstacles, gems } = level;
 
   const getAdjacentDir = (r, c) => {
     const dr = r - heroPos.r;
@@ -26,9 +27,10 @@ export default function RouteBoard({
   };
 
   const iconSizeClass = size >= 8 ? 'text-3xl sm:text-4xl' : 'text-5xl sm:text-6xl';
+  const gemSizeClass = size >= 8 ? 'text-2xl sm:text-3xl' : 'text-4xl sm:text-5xl';
 
   return (
-    <div className={`route-board-frame ${gameMode === 'queue' ? 'is-queue-mode' : ''}`}>
+    <div className={`route-board-frame ${gameMode === 'instant' ? 'is-instant-mode' : ''}`}>
       <div
         className="route-grid"
         style={{
@@ -44,6 +46,8 @@ export default function RouteBoard({
           const isHero = heroPos.r === r && heroPos.c === c;
           const isTarget = target.r === r && target.c === c;
           const isObstacle = obstacles.has(key);
+          const hasGem = gems?.has(key);
+          const isGemCollected = hasGem && collectedGems.has(key);
           const isVisited = visitedCells.has(key);
           const isCollision = collisionCellKey === key;
           const adjDir = canClickAdjacent ? getAdjacentDir(r, c) : null;
@@ -54,6 +58,8 @@ export default function RouteBoard({
               onClick={() => adjDir && onStepDirection(adjDir)}
               className={`route-cell ${isHero ? 'is-hero' : ''} ${
                 isVisited && !isHero ? 'is-visited' : ''
+              } ${hasGem && !isGemCollected ? 'is-gem' : ''} ${
+                isGemCollected ? 'is-gem-collected' : ''
               } ${isTarget ? 'is-target' : ''} ${isObstacle ? 'is-obstacle' : ''} ${
                 isCollision ? 'is-collision' : ''
               } ${adjDir ? 'is-adjacent' : ''}`}
@@ -72,6 +78,10 @@ export default function RouteBoard({
                 <span className={iconSizeClass}>{theme.targetIcon}</span>
               ) : isObstacle ? (
                 <span className={iconSizeClass}>{theme.obstacleIcon}</span>
+              ) : hasGem && !isGemCollected ? (
+                <span className={`route-gem-icon ${gemSizeClass}`}>💎</span>
+              ) : isGemCollected ? (
+                <span className="text-xl sm:text-2xl">✨</span>
               ) : isVisited ? (
                 <span className="route-footprint" />
               ) : null}

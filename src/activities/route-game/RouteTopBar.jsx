@@ -7,6 +7,8 @@ export default function RouteTopBar({
   onBackToHome,
   gameMode,
   onChangeMode,
+  withGems,
+  onToggleGems,
   gridSize,
   onChangeSize,
   themeId,
@@ -37,6 +39,7 @@ export default function RouteTopBar({
             type="button"
             className={`seg-btn ${gameMode === 'instant' ? 'active' : ''}`}
             onClick={() => onChangeMode('instant')}
+            title="Basınca anında hareket eder (Elmassız & Listesiz)"
           >
             👆 Tek Adım
           </button>
@@ -44,10 +47,22 @@ export default function RouteTopBar({
             type="button"
             className={`seg-btn ${gameMode === 'queue' ? 'active' : ''}`}
             onClick={() => onChangeMode('queue')}
+            title="Sağ panelde rota listeler ve elmas toplar (İleri Seviye)"
           >
-            🧩 Algoritma
+            💎 Elmaslı Algoritma
           </button>
         </div>
+
+        {gameMode === 'queue' && (
+          <button
+            type="button"
+            onClick={() => onToggleGems(!withGems)}
+            className={`icon-pill-btn ${withGems ? 'is-active' : ''}`}
+            title="Algoritma modunda elmasları aç/kapat"
+          >
+            💎 {withGems ? 'Elmas: Açık' : 'Elmas: Kapalı'}
+          </button>
+        )}
 
         <div className="segmented-control" role="group" aria-label="Harita Boyutu">
           {[5, 8].map((s) => (

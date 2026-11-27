@@ -19,9 +19,8 @@ Akıllı tahta ve sınıf içi kullanım için tasarlanmış, **GridView (Izgara
   3. **🧩 Duygu Eşleştirme Modu:** Üstte çıkan duygu ifadesinin aynısını alttaki 3 seçenek arasından bulup eşleştirme.
   4. **👧 Kız / 👦 Erkek Seçimi:** Üst çubuktan tek tıkla kız veya erkek karakter görsellerine geçiş.
 - **🧭 3. Etkinlik — Rota ve Algoritma (`route-game`):**
-  1. **8×8 ve 5×5 Harita Seçeneği:** Üst çubuktan tek tıkla 8×8 veya 5×5 tahtaya geçiş.
-  2. **4 Karakter & Dünya:** Minik Kedi (🐟), Sevimli Arı (🌻), Akıllı Robot (🔋), Uzay Kaşifi (🪐).
-  3. **Tek Adım & Algoritma Modu:** Oklarla anında ilerleme veya kod sırası dizip `▶️ BAŞLAT` ile çalıştırma, komşu kareye dokunarak adım atma ve BFS onaylı **🎲 Sürpriz Harita**.
+  1. **👆 Tek Adım Modu (Anasınıfı / 1. Sınıf):** Yön tuşuna veya komşu kareye basıldığı anda karakterin anında hareket ettiği, elmassız ve rota listesi olmayan sade mod.
+  2. **💎 Elmaslı Algoritma Modu (İleri Seviye 2.–3. Sınıf):** Yön tuşlarına basıldığında karakter hemen yürümek yerine sağ paneldeki **`📋 Rota Alanı`** listesine numaralı adımlar (`1. ➡️ Sağ`, `2. ⬆️ Yukarı`...) olarak eklenir ve **`▶️ BAŞLAT`** ile çalıştırılır; yol üzerindeki `1–3` adet **`💎 Elmas`** toplanarak hedefe ulaşılır.
 - **🚂 4. Etkinlik — Tren Vagonu Örüntü (`train-pattern`):**
   1. **Kolay & Usta Modları:** Anasınıfı için 1 boş vagon (`AB-AB`, `AA-BB`, `AAB`) veya 1. sınıf için 2 boş vagon (`ABC-ABC`, `ABCD`).
   2. **4 Vagon Teması:** Renkli Şekiller, Neşeli Meyveler, Sevimli Hayvanlar, Uzay Treni ve **🎲 Sürpriz Tren**.
